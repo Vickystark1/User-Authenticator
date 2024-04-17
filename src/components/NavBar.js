@@ -34,7 +34,7 @@ export default function NavBar(props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <a className="navbar-brand" href="#" style={{ textDecoration: "none" }}>
-        <Typography variant="h6" sx={{ my: 2 }}>
+        <Typography variant="h6" sx={{ my: 2 }} >
           User Authenticator
         </Typography>
       </a>
@@ -46,7 +46,7 @@ export default function NavBar(props) {
           <ListItem disablePadding>
             <ListItemButton sx={{ textAlign: "center" }}>
               <ListItemText>
-                <Link className="nav-link" to="/">
+                <Link className="nav-link" to="/"style={{color:"black"}} >
                   Register
                 </Link>
               </ListItemText>
@@ -57,8 +57,8 @@ export default function NavBar(props) {
           <ListItem disablePadding>
             <ListItemButton sx={{ textAlign: "center" }}>
               <ListItemText>
-                <Link className="nav-link" to="/login">
-                  Login
+                <Link className="nav-link" to="/login" >
+                  Loginstyle={{color:"black"}}
                 </Link>
               </ListItemText>
             </ListItemButton>
@@ -68,7 +68,7 @@ export default function NavBar(props) {
           <ListItem disablePadding>
             <ListItemButton sx={{ textAlign: "center" }}>
               <ListItemText>
-                <Link className="nav-link" to="/dashboard">
+                <Link className="nav-link" to="/dashboard"style={{color:"black"}} >
                   Dashboard
                 </Link>
               </ListItemText>
@@ -82,7 +82,7 @@ export default function NavBar(props) {
                 <a
                   className="nav-link"
                   onClick={props.logoutUser}
-                  style={{ cursor: "pointer" }}
+                  style={{ cursor: "pointer",color:"black" }}
                 >
                   Logout
                 </a>
@@ -102,22 +102,36 @@ export default function NavBar(props) {
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
         <AppBar component="nav">
-          <Toolbar>
-            <IconButton
+          <Toolbar style={{display:"flex",justifyContent:"space-between"}}>
+         
+          <Typography
               color="inherit"
+              variant="h6"
               aria-label="open drawer"
               edge="start"
               onClick={handleDrawerToggle}
               sx={{ mr: 2, display: { sm: "none" } }}
+              style={{ justifyContent: "start" }}
+             >
+              User Authenticator
+            </Typography>
+            {/* <h1>User Authenticator</h1> */}
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="end"
+              onClick={handleDrawerToggle}
+              sx={{  display: { sm: "none" }, }}
               style={{ justifyContent: "end" }}
             >
               <MenuIcon />
             </IconButton>
+            
             <Typography
               variant="h6"
               component="div"
-              sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-            >
+              sx={{ display: { xs: "none", sm: "block" } }}
+             >
               User Authenticator
             </Typography>
             <Box sx={{ display: { xs: "none", sm: "block" } }}>

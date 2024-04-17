@@ -42,9 +42,7 @@ export default function DashboardPage(){
       <div className='d-flex justify-content-center align-items-center' style={{position:"relative",top:"30vh",alignItems:"center"}} >
       <div style={{display:"flex",position:"relative",height:"15vh",padding:"20px 20px",border:"1px dashed gray",alignItems:"center",justifyContent:"center"}}>
       <img src={tick} alt ="" style={{height:80,Width:80,position:'absolute',top:-40,borderRadius:"50px 50px"}}/>
-      <h2 style={{position:"relative",top:"3vh"}}>Successfully Logedin!..</h2>
-
-
+      <h2 style={{position:"relative",top:"3vh"}}>Successfully Loggedin!..</h2>
       </div>
       </div>
     </div>
