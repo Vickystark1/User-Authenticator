@@ -1,97 +1,82 @@
 import { Link } from "react-router-dom";
 import { isAuthenticated } from "../services/Auth";
 import "./NavBar.css";
-
 import * as React from "react";
 import PropTypes from "prop-types";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
-import Divider from "@mui/material/Divider";
-import Drawer from "@mui/material/Drawer";
-import IconButton from "@mui/material/IconButton";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
+import {AppBar,Box,CssBaseline,Divider,Drawer,IconButton,List,ListItem,ListItemButton,ListItemText,Toolbar,Typography,Button} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import { ThemeProvider } from "@mui/material";
 
 const drawerWidth = 240;
-const navItems = ["Register", "Login", "Dashboard", "Logout"];
 
 export default function NavBar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
 
-  const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <a className="navbar-brand" href="#" style={{ textDecoration: "none" }}>
-        <Typography variant="h6" sx={{ my: 2 }} >
-          User Authenticator
-        </Typography>
-      </a>
-      {/* <a  className="navbar-brand" href="#" ><h6>User Authenticator</h6></a> */}
+  const drawer = ( 
+     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+       <Link className="navbar-brand" href="#home" style={{ textDecoration: "none" }}>
+         <Typography variant="h6" sx={{ my: 2 }} >
+           User Authenticator
+         </Typography>
+       </Link>
 
-      <Divider />
+     <Divider />
+    
       <List style={{ color: "black" }}>
-        {!isAuthenticated() ? (
-          <ListItem disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText>
-                <Link className="nav-link" to="/"style={{color:"black"}} >
-                  Register
-                </Link>
-              </ListItemText>
-            </ListItemButton>
-          </ListItem>
+         {!isAuthenticated() ? (
+           <ListItem disablePadding>
+             <ListItemButton sx={{ textAlign: "center" }}>
+               <ListItemText>
+                 <Link className="nav-link" to="/"style={{color:"black"}} >
+                   Register
+                 </Link>
+               </ListItemText>
+             </ListItemButton>
+           </ListItem>
+         ) : null}
+         {!isAuthenticated() ? (
+           <ListItem disablePadding>
+             <ListItemButton sx={{ textAlign: "center" }}>
+               <ListItemText>
+                 <Link className="nav-link" to="/login" style={{color:"black"}} >
+                 Login
+                 
+                 </Link>
+               </ListItemText>
+             </ListItemButton>
+           </ListItem>
+         ) : null}
+         {isAuthenticated() ? (
+           <ListItem disablePadding>
+             <ListItemButton sx={{ textAlign: "center" }}>
+               <ListItemText>
+                 <Link className="nav-link" to="/dashboard"style={{color:"black"}} >
+                   Dashboard
+                 </Link>
+               </ListItemText>
+             </ListItemButton>
+           </ListItem>
+         ) : null}
+         {isAuthenticated() ? (
+           <ListItem disablePadding>
+             <ListItemButton sx={{ textAlign: "center" }}>
+               <ListItemText>
+                 <Link href="#logout"
+                   className="nav-link"
+                   onClick={props.logoutUser}
+                   style={{ cursor: "pointer",color:"black" }}
+                 >
+                   Logout
+                 </Link>
+               </ListItemText>
+             </ListItemButton>
+           </ListItem>
         ) : null}
-        {!isAuthenticated() ? (
-          <ListItem disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText>
-                <Link className="nav-link" to="/login" >
-                  Loginstyle={{color:"black"}}
-                </Link>
-              </ListItemText>
-            </ListItemButton>
-          </ListItem>
-        ) : null}
-        {isAuthenticated() ? (
-          <ListItem disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText>
-                <Link className="nav-link" to="/dashboard"style={{color:"black"}} >
-                  Dashboard
-                </Link>
-              </ListItemText>
-            </ListItemButton>
-          </ListItem>
-        ) : null}
-        {isAuthenticated() ? (
-          <ListItem disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText>
-                <a
-                  className="nav-link"
-                  onClick={props.logoutUser}
-                  style={{ cursor: "pointer",color:"black" }}
-                >
-                  Logout
-                </a>
-              </ListItemText>
-            </ListItemButton>
-          </ListItem>
-        ) : null}
-      </List>
-    </Box>
+       </List>
+     </Box>
   );
 
   const container =
@@ -115,7 +100,7 @@ export default function NavBar(props) {
              >
               User Authenticator
             </Typography>
-            {/* <h1>User Authenticator</h1> */}
+            
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -166,7 +151,7 @@ export default function NavBar(props) {
               ) : null}
               {isAuthenticated() ? (
                 <Button sx={{ color: "#fff" }}>
-                  <a
+                  <a href="#logout"
                     className="nav-link"
                     onClick={props.logoutUser}
                     style={{ cursor: "pointer", color: "white" }}
@@ -201,12 +186,7 @@ export default function NavBar(props) {
         </nav>
         <Box component="main" sx={{ p: 3 }}>
           <Toolbar />
-          {/* <Typography>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique unde
-          fugit veniam eius, perspiciatis sunt? Corporis qui ducimus quibusdam,
-          aliquam dolore excepturi quae. Distinctio enim at eligendi perferendis in
-          cum quibusdam sed quae, accus
-        </Typography> */}
+          
         </Box>
         
       </Box>
