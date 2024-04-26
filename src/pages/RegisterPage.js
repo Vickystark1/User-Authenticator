@@ -21,15 +21,15 @@ export default function RegisterPage(){
         event.preventDefault();
         let errors =initialStateErrors; 
         let hasError = false; 
-        if (inputs.name == "") {
+        if (inputs.name === "") {
             errors.name.required =true;
             hasError=true;
         }
-        if (inputs.email == "") {
+        if (inputs.email === "") {
             errors.email.required =true;
             hasError=true;
         }
-        if (inputs.password == "") {
+        if (inputs.password === "") {
             errors.password.required =true;
             hasError=true;
         }
@@ -40,7 +40,7 @@ export default function RegisterPage(){
             RegisterApi(inputs).then((response)=>{
                storeUserData(response.data.idToken);
             }).catch((err)=>{
-               if(err.response.data.error.message=="EMAIL_EXISTS"){
+               if(err.response.data.error.message==="EMAIL_EXISTS"){
                     setErrors({...errors,custom_error:"Already this email has been registered!"})
                }else if(String(err.response.data.error.message).includes('WEAK_PASSWORD')){
                     setErrors({...errors,custom_error:"Password should be at least 6 characters!"})

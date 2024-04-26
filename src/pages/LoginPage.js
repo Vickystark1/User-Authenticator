@@ -31,11 +31,11 @@ export default function LoginPage (){
         let errors =initialStateErrors; 
         let hasError = false; 
         
-        if (inputs.email == "") {
+        if (inputs.email === "") {
             errors.email.required =true;
             hasError=true;
         }
-        if (inputs.password == "") {
+        if (inputs.password === "") {
             errors.password.required =true;
             hasError=true;
         }
@@ -46,7 +46,7 @@ export default function LoginPage (){
             LoginApi(inputs).then((response)=>{
                storeUserData(response.data.idToken);
             }).catch((err)=>{
-               if (err.code="ERR_BAD_REQUEST") {
+               if (err.code = "ERR_BAD_REQUEST") {
                     setErrors({...errors,custom_error:"Invalid Credentials."})
                }
 

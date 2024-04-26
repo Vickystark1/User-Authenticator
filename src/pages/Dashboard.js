@@ -4,8 +4,6 @@ import NavBar from "../components/NavBar"
 import { UserDetailsApi } from "../services/Api"
 import { logout,isAuthenticated } from "../services/Auth"
 import React from "react";
-import BannerImage from "../Assets/home-banner-image.jpg";
-import { FiArrowRight } from "react-icons/fi";
 import tick from "../Assets/tick.gif";
 
 export default function DashboardPage(){
