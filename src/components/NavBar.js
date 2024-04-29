@@ -3,9 +3,11 @@ import { isAuthenticated } from "../services/Auth";
 import "./NavBar.css";
 import * as React from "react";
 import PropTypes from "prop-types";
-import {AppBar,Box,CssBaseline,Divider,Drawer,IconButton,List,ListItem,ListItemButton,ListItemText,Toolbar,Typography,Button} from "@mui/material";
+import {AppBar,Box,CssBaseline,Divider,Drawer,IconButton,List,ListItem,ListItemButton,ListItemText,Toolbar,Typography,Button, ThemeProvider, createTheme} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-
+import { dark } from "@mui/material/styles/createPalette";
+import Logoauth from '../Assets/authlogo.png';
+import { Image } from "react-bootstrap";
 const drawerWidth = 240;
 
 export default function NavBar(props) {
@@ -82,14 +84,29 @@ export default function NavBar(props) {
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
+    // const darkTheme = createTheme({
+    //   palette: {
+    //     mode: 'dark', // Set mode to 'dark' for a dark theme
+    //     primary: {
+    //       main: '#f48fb1', // Example primary color
+    //     },
+    //     secondary: {
+    //       main: '#757575', // Grey color
+    //     },
+    //     // You can define other colors like error, warning, info, etc.
+    //   },
+    // });
+
   return (
     <div>
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
+        {/* <ThemeProvider theme={darkTheme
+         }> */}
+
         <AppBar component="nav">
           <Toolbar style={{display:"flex",justifyContent:"space-between"}}>
-         
-          <Typography
+            <Typography
               color="inherit"
               variant="h6"
               aria-label="open drawer"
@@ -97,10 +114,9 @@ export default function NavBar(props) {
               onClick={handleDrawerToggle}
               sx={{ mr: 2, display: { sm: "none" } }}
               style={{ justifyContent: "start" }}
-             >
-              User Authenticator
+             >User Authenticator
             </Typography>
-            
+          
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -111,8 +127,8 @@ export default function NavBar(props) {
             >
               <MenuIcon />
             </IconButton>
-            
             <Typography
+            className="mx-1 mt-1"
               variant="h6"
               component="div"
               sx={{ display: { xs: "none", sm: "block" } }}
@@ -163,6 +179,7 @@ export default function NavBar(props) {
             </Box>
           </Toolbar>
         </AppBar>
+        {/* </ThemeProvider> */}
         
         <nav>
           <Drawer

@@ -14,8 +14,13 @@
     .container{
         width: 70%;
     }
-    .login-sec{
-        
+    /* .login-sec{
         width: 55%;
+    } */
+}
+
+@media (min-width:430px){
+    .container{
+        width: 40%
     }
 }
